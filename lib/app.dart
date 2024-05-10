@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ice_cream/screens/home_screen.dart';
+import 'package:ice_cream/screens/login_screen.dart';
+import 'package:ice_cream/screens/presentation_screen.dart';
+import 'package:ice_cream/theme/app_color.dart';
 
 class IceCreamApp extends StatelessWidget {
   const IceCreamApp({super.key});
@@ -7,12 +9,17 @@ class IceCreamApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Suck Ice Cream',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: AppColor.primaryColor),
         useMaterial3: true,
       ),
-      home: const HomePage(title: 'Flutter Demo Home Page'),
+      initialRoute: '/login',
+      routes: {
+        '/': (context) => const PresentationScreen(),
+        '/login': (context) => const LoginScreen()
+      },
+      debugShowCheckedModeBanner: false,
     );
   }
 }
